@@ -24,9 +24,9 @@ The main purpose of this network is to expose a load-balanced and monitored inst
 Load balancing ensures that the application will be highly _available_, in addition to restricting _inbound access__ to the network.
 - _TODO: What aspect of security do load balancers protect? What is the advantage of a jump box?_
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.
-- _TODO: What does Filebeat watch for?_
-- _TODO: What does Metricbeat record?_
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the file systems of the VMs on the network and system metrics_.
+- _TODO: What does Filebeat watch for?_The Filebeat ensures that events are delivered to the configured output with no data loss.
+- _TODO: What does Metricbeat record?_ Metricbeat records data about every container running on the host.
 
 The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
@@ -47,40 +47,57 @@ The machines on the internal network are not exposed to the public Internet.
 Only the Jump box_ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
 - _TODO: Add whitelisted IP addresses_
 
-Machines within the network can only be accessed by _____.
+Machines within the network can only be accessed by each other_.
 - _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
 
 A summary of the access policies in place can be found in the table below.
 
+
+
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|          |                     |                      |
-|          |                     |                      |
+| Jump Box | Yes                 | xx.xx.xx.xx--------  |
+| ELK      | No                  | 10.0.0.1-254         |
+| DVWA 1   | No                  | 10.0.0.1-254         |
+| DVWA 1   | No                  | 10.0.0.1-254         |
+| DVWA 2   | No                  | 10.0.0.1-254         |
+| DVWA 3   | No                  | 10.0.0.1-254         |
+
+
+
 
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: What is the main advantage of automating configuration with Ansible?_
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because it saves time, reduces errors, and uses infrustructure as code.
+- _TODO: What is the main advantage of automating configuration with Ansible?_ It saves time
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+- Gathering Facts
+- Install docker.io
+- Install python3-pip
+- Install Docker module 
+- Increase virtual memory
+- Increase virtual memory on restart
+- download and launch a docker elk container
+- Enable service docker on boot
+
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
 ![TODO: Update the path with the name of your screenshot of docker ps output](Images/docker_ps_output.png)
 
 ### Target Machines & Beats
-This ELK server is configured to monitor the following machines:
+This ELK server is configured to monitor the following machines: 10.0.0.10, 10.0.0.0, and 10.0.0.11
 - _TODO: List the IP addresses of the machines you are monitoring_
 
 We have installed the following Beats on these machines:
-- _TODO: Specify which Beats you successfully installed_
+- Filebeat
+- Metricbeat
 
 These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+- Filebeat detects changes to the filesystem. Specifically, 
+   we use it to collect Apache logs.
+- Metricbeat detects changes in system metrics, such as CPU usage. We use it to detect SSH login attempts, failed sudo escalations, and CPU/RAM statistics.
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
