@@ -2,7 +2,7 @@
 
 The files in this repository were used to configure the network depicted below.
 
-[Azure diagram](./Images/Network-Project.png)
+![Azure diagram](./Images/Network-Project.png)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above.
 
@@ -85,7 +85,7 @@ The playbook implements the following tasks:
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-[docker image](./Images/docker_ps.png)
+![docker image](./Images/docker_ps.png)
 
 ### Target Machines & Beats
 
