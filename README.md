@@ -122,14 +122,14 @@ ansible-playbook install_metricbeat.yml webservers
 - _Which file do you update to make Ansible run the playbook on a specific machine? 
 
 [webservers]
-10.0.0.5
-10.0.0.6
-
+10.0.0.9
+10.0.0.10
+10.0.0.11
 
 How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
 
 [elk]
-10.0.0.8
+10.0.0.4
 
 
 - _Which URL do you navigate to in order to check that the ELK server is running?
