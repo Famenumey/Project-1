@@ -51,7 +51,7 @@ The machines on the internal network are not exposed to the public Internet.
 
 Only the Jump box_ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
 
-- 65.128.53.228
+- 65.128.53.248
 
 Machines within the network can only be accessed by each other.
 
@@ -61,7 +61,7 @@ A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | Yes                 | 65.128.53.228------  |
+| Jump Box | Yes                 | 65.128.53.248------  |
 | ELK      | No                  | 10.0.0.1-254         |
 | DVWA 1   | No                  | 10.0.0.1-254         |
 | DVWA 1   | No                  | 10.0.0.1-254         |
