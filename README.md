@@ -2,17 +2,17 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![Azure diagram](https://github.com/Famenumey/scripts/blob/main/diagram/Network%20Project.png)
+![Azure diagram](./Images/Network-Project.png)
 
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the _____ file may be used to install only certain pieces of it, such as Filebeat.
+These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above.
 
-[Metricbeat](./Metricbeat/metricbeat-playbook.yml)
-[Filebeat](./Filebeat/filebeat-playbook.yml)
-[ELK](./ELK/elk.yml)
+  [Metricbeat](./Metribeat/metricbeat-playbook.yml)
+  [Filebeat](./Filebeat/filebeat-playbook.yml)
+  [ELK](./ELK/elk.yml)
 
 This document contains the following details:
 
-- Description of the Topology
+- Descriptionof the Topology
 - Access Policies
 - ELK Configuration
 - Beats in Use
@@ -23,15 +23,17 @@ This document contains the following details:
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
-Load balancing ensures that the application will be highly _available_, in addition to restricting _inbound access__ to the network.
+Load balancing ensures that the application will be highly available, in addition to restricting inbound access to the network.
 
-- What aspect of security do load balancers protect? What is the advantage of a jump box?_
+- Theload balancer protects the servers from traffic overload. It also ensures high availability.
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the file systems of the VMs on the network and system metrics_.
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the file systems of the VMs on the network and also watch system metrics.
 
-- What does Filebeat watch for?_The Filebeat ensures that events are delivered to the configured output with no data loss.
+-The Filebeat ensures that events are delivered to the
+ configured output with no data loss.
 
-- What does Metricbeat record?_ Metricbeat records data about every container running on the host.
+- Metricbeat records data about every container running
+   on the host.
 
 The configuration details of each machine may be found below.
 
@@ -49,7 +51,7 @@ The machines on the internal network are not exposed to the public Internet.
 
 Only the Jump box_ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
 
-- 65.128.53.228
+- 65.128.53.248
 
 Machines within the network can only be accessed by each other.
 
@@ -59,7 +61,7 @@ A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | Yes                 | 65.128.53.228------  |
+| Jump Box | Yes                 | 65.128.53.248------  |
 | ELK      | No                  | 10.0.0.1-254         |
 | DVWA 1   | No                  | 10.0.0.1-254         |
 | DVWA 1   | No                  | 10.0.0.1-254         |
@@ -69,8 +71,6 @@ A summary of the access policies in place can be found in the table below.
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because it saves time, reduces errors, and uses infrustructure as code.
-
-- What is the main advantage of automating configuration with Ansible? It saves time
 
 The playbook implements the following tasks:
 
@@ -85,7 +85,7 @@ The playbook implements the following tasks:
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![Docker_ps_output](./Images/docker_ps.png)
+![docker image](./Images/docker_ps.png)
 
 ### Target Machines & Beats
 
@@ -114,16 +114,14 @@ SSH into the control node and follow the steps below:
 - Update the /etc/ansible/hosts file to include webservers
 - Run the playbook, and navigate to ELK to check that the installation worked as expected.
 
-Answer the following questions to fill in the blanks:
-
-- Which file is the playbook?
+- The playbook files are as follows:
 ansible-playbook install_elk.yml elk
 ansible-playbook install_filebeat.yml webservers
 ansible-playbook install_metricbeat.yml webservers
 
- Where do you copy it?
+Where do you copy it?
 
- /etc/ansible
+/etc/ansible
 
 - Which file do you update to make Ansible run the playbook on a specific machine?
 
@@ -132,11 +130,13 @@ ansible-playbook install_metricbeat.yml webservers
 10.0.0.10
 10.0.0.11
 
-How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
+How do I specify which machine to install the ELK server on versus which to install Filebeat on?
 
 [elk]
 10.0.0.4
 
-- Which URL do you navigate to in order to check that the ELK server is running?
+- <http://20.94.202.106:5601/app/kibana#/is> the URL to you navigate to in order to check that the ELK server is running?
 
-< curl <http://10.0.0.8:5601> >
+curl <http://10.0.0.8:5601>
+
+As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc.
