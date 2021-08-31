@@ -6,7 +6,7 @@ The files in this repository were used to configure the network depicted below.
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above.
 
-  [Metricbeat]"C:\Github\scripts\ansible\Metribeat"
+  [Metricbeat]("C:\Github\scripts\ansible\Metribeat")
   [Filebeat](./Filebeat/filebeat-playbook.yml)
   [ELK](./ELK/elk.yml)
 
